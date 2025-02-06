@@ -42,6 +42,7 @@ def display_forecast(data):
     # Display the forecast for the next 7 days
     for day, forecast in forecast_data.items():
         dt = datetime.strptime(day, '%Y-%m-%d')
+        # print(dt)
         temp_max = forecast['temp_max']
         temp_min = forecast['temp_min']
         description = forecast['description']
