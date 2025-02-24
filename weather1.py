@@ -6,7 +6,6 @@ LAT, LON = 29.4241, -98.4936  # Coordinates for San Antonio, TX
 BASE_URL = 'https://api.openweathermap.org/data/3.0/onecall'
 
 def get_weather_data():
-    """Fetch weather data using One Call API."""
     params = {
         'lat': LAT,
         'lon': LON,
@@ -18,7 +17,6 @@ def get_weather_data():
     return response.json()
 
 def display_current_weather(data):
-    """Display current weather conditions."""
     current = data.get('current', {})
     temp = current.get('temp', 'N/A')
     description = current.get('weather', [{}])[0].get('description', 'N/A')
@@ -28,7 +26,6 @@ def display_current_weather(data):
     print(f"Condition: {description.capitalize()}")
 
 def display_forecast(data):
-    """Display 7-day weather forecast."""
     print("\n\033[1m7-Day Forecast:\033[0m")
     for day in data.get('daily', []):
         dt = datetime.fromtimestamp(day.get('dt', 0))
@@ -37,7 +34,6 @@ def display_forecast(data):
         print(f"{dt.strftime('%A, %B %d')}: {temp}°F, {description.capitalize()}")
 
 def main():
-    """Main function to fetch and display weather data."""
     data = get_weather_data()
     display_current_weather(data)
     display_forecast(data)
